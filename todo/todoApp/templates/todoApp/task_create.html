@@ -1,0 +1,23 @@
+{% extends 'todoApp/base.html' %}
+
+{% block body_class %}background-task{% endblock %}
+{% block title %}Create Task{% endblock %}
+{% block content %}
+  <div class="task-create-wrapper">
+    <div class="task-create-container">
+
+      <a href="{% url 'todo-list' %}" class="task-details-back">← Retour à la liste</a>
+      <h1 class="task-create-title">Créer une tâche</h1>
+
+      <form action="" method="post" class="task-create-form" novalidate>
+        {% csrf_token %}
+        <div class="form-fields">
+          {{ form.as_p }}
+        </div>
+        <div class="form-actions">
+          <input type="submit" value="Créer la tâche" class="btn btn-primary">
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

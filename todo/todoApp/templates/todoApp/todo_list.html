@@ -1,0 +1,25 @@
+{% extends 'todoApp/base.html' %}
+{% load static %}
+
+{% block title %}Liste des Tâches{% endblock %}
+{% block body_class %}background-task{% endblock %}
+
+{% block content %}
+
+<a class="tasks-page-button-create" href="{% url 'task-create' %}">Add Task</a>
+
+<div class="tasks-page-card-container">
+  {% for task in tasks %}
+    <div class="task-postit" style="background-image: url('{% static 'todoApp/css/images/Post-it.png' %}');">
+      <div class="task-postit-content">
+        <a class="task-postit-title" href="{% url 'task-details' task.id %}">{{ task }}</a>
+        <a class="task-postit-title" href="{% url 'task-details' task.id %}">{{ task.date }}</a>
+        <div class="task-postit-buttons">
+          <a class="task-postit-button edit" href="{% url 'task-update' task.id %}">✏️ Edit</a>
+          <a class="task-postit-button delete" href="{% url 'task-delete' task.id %}">🗑️ Delete</a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

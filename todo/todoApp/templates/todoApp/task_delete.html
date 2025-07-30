@@ -1,0 +1,18 @@
+{% extends 'todoApp/base.html' %}
+
+{% block body_class %}background-task{% endblock %}
+{% block title %}Supprimer Task{% endblock %}
+
+{% block content %}
+  <div class="confirmation-wrapper">
+  <div class="confirmation-container">
+    <h1 class="confirmation-title">Êtes-vous sûr de vouloir supprimer cette tâche ?</h1>
+
+    <form method="post" class="confirmation-form">
+      {% csrf_token %}
+      <input type="submit" name="confirm" value="Supprimer" class="btn btn-danger">
+      <input type="submit" name="cancel" value="Annuler" class="btn btn-cancel">
+    </form>
+  </div>
+  </div>
+{% endblock %}

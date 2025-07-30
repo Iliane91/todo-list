@@ -1,0 +1,22 @@
+{% extends 'todoApp/base.html' %}
+
+{% block body_class %}background-task{% endblock %}
+{% block title %}Task Update{% endblock %}
+{% block content %}
+  <div class="task-update-wrapper">
+    <div class="task-update-container">
+      <a href="{% url 'todo-list' %}" class="task-details-back">← Retour à la liste</a>
+      <h1 class="task-update-title">Mise à jour de votre tâche</h1>
+
+      <form action="" method="post" class="task-update-form" novalidate>
+        {% csrf_token %}
+        <div class="form-fields">
+          {{ form.as_p }}
+        </div>
+        <div class="form-actions">
+          <input type="submit" value="Enregistrer les modifications" class="btn btn-primary">
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

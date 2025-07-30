@@ -1,0 +1,22 @@
+{% extends 'todoApp/base.html' %}
+{% load static %}
+
+{% block body_class %}background-accueil{% endblock %}
+{% block title %}Accueil{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <h1>
+        Welcome{% if user.is_authenticated %}, {{ user.first_name|default:user.username }}{% endif %}
+    </h1>
+    <p>Organisez vos journées avec efficacité et simplicité. <br> Gérez vos tâches en un clic.</p>
+    {% if user.is_authenticated %}
+        <a href="{% url 'todo-list' %}"><button class="cta-btn">Voir mes tâches</button></a>
+    {% else %}
+        <a href="{% url 'login' %}?next={% url 'todo-list' %}"><button class="cta-btn">Commencer</button></a>
+    {% endif %}
+</section>
+
+
+{% endblock %}
